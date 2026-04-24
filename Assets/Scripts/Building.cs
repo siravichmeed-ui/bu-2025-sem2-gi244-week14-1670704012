@@ -19,7 +19,7 @@ public abstract class Building : MonoBehaviour,
 
     [Tooltip("-1 is infinite")]
     public int InventorySpace = -1;
-    
+
     protected List<InventoryEntry> m_Inventory = new List<InventoryEntry>();
     public List<InventoryEntry> Inventory => m_Inventory;
 
@@ -30,13 +30,13 @@ public abstract class Building : MonoBehaviour,
     {
         //as we use the shortcut -1 = infinite amount, we need to actually set it to max value for computation following
         int maxInventorySpace = InventorySpace == -1 ? Int32.MaxValue : InventorySpace;
-        
+
         if (m_CurrentAmount == maxInventorySpace)
             return amount;
 
         int found = m_Inventory.FindIndex(item => item.ResourceId == resourceId);
         int addedAmount = Mathf.Min(maxInventorySpace - m_CurrentAmount, amount);
-        
+
         //couldn't find an entry for that resource id so we add a new one.
         if (found == -1)
         {
@@ -59,7 +59,7 @@ public abstract class Building : MonoBehaviour,
     public int GetItem(string resourceId, int requestAmount)
     {
         int found = m_Inventory.FindIndex(item => item.ResourceId == resourceId);
-        
+
         //couldn't find an entry for that resource id so we add a new one.
         if (found != -1)
         {

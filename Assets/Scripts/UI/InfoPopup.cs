@@ -18,7 +18,7 @@ public class InfoPopup : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-    
+
     public void AddToContent(int count, Sprite Icone)
     {
         var newEntry = Instantiate(EntryPrefab, ContentTransform);
